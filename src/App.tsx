@@ -8,6 +8,11 @@ import { Task } from "./interfaces/Task";
 import {TasksData} from "./TasksData"
 import TaskForm from "./components/TaskForm";
 export function App({ title }: AppProps) {
+  const getTasks = () => {
+    //GET TASKS FROM LOCALSTORAGE 
+    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+    return tasks;
+  }
   const [tasks, setTasks] = useState<Task[]>(TasksData);
   return (
     <div className="bg-dark" style={{height:"100vh"}}>

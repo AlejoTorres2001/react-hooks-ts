@@ -1,4 +1,10 @@
+import { Task } from "../interfaces/Task"
+
 const TaskForm = () => {
+    //save task on localstorage
+    const saveTask = (task: Task) => {
+
+    }
     return (
         //make a form to create new tasks with boostrap
         <form onSubmit={()=>{}}>
