@@ -9,6 +9,7 @@ import {TasksData} from "./TasksData"
 import TaskForm from "./components/TaskForm";
 import { getTasks } from "./utils/getTasks";
 import { deleteTask } from "./utils/deteleTask";
+import { updateTasks } from "./utils/updateTasks";
 export function App({ title }: AppProps) {
   const [tasks, setTasks] = useState<Task[]>(getTasks());
   const handleAddTask = ()=>{
@@ -16,6 +17,10 @@ export function App({ title }: AppProps) {
   }
   const handleDeleteTask = (id:number)=>{
     deleteTask(id);
+    setTasks(getTasks());
+  }
+  const handleEditTask = (task:Task)=>{
+    updateTasks(task);
     setTasks(getTasks());
   }
   return (
@@ -31,7 +36,7 @@ export function App({ title }: AppProps) {
       <main className="container p-4">
         <TaskForm addTaskCallback={handleAddTask}></TaskForm>
         <div className="row">
-        <TaskList tasks={tasks} deleteTaskCallBack={handleDeleteTask}></TaskList>
+        <TaskList tasks={tasks} deleteTaskCallBack={handleDeleteTask} updateTaskCallBack={handleEditTask}></TaskList>
         </div>
       </main>
       
