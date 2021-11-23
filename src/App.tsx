@@ -7,13 +7,17 @@ import TaskList from "./components/TaskList";
 import { Task } from "./interfaces/Task";
 import {TasksData} from "./TasksData"
 import TaskForm from "./components/TaskForm";
+import { getTasks } from "./utils/getTasks";
+import { deleteTask } from "./utils/deteleTask";
 export function App({ title }: AppProps) {
-  const getTasks = () => {
-    //GET TASKS FROM LOCALSTORAGE 
-    const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    return tasks;
+  const [tasks, setTasks] = useState<Task[]>(getTasks());
+  const handleAddTask = ()=>{
+    setTasks(getTasks());
   }
-  const [tasks, setTasks] = useState<Task[]>(TasksData);
+  const handleDeleteTask = (id:number)=>{
+    deleteTask(id);
+    setTasks(getTasks());
+  }
   return (
     <div className="bg-dark" style={{height:"100vh"}}>
       <nav className="navbar navbar-dark bg-primary">
@@ -25,9 +29,9 @@ export function App({ title }: AppProps) {
         </div>
       </nav>
       <main className="container p-4">
-        <TaskForm></TaskForm>
+        <TaskForm addTaskCallback={handleAddTask}></TaskForm>
         <div className="row">
-        <TaskList tasks={tasks}></TaskList>
+        <TaskList tasks={tasks} deleteTaskCallBack={handleDeleteTask}></TaskList>
         </div>
       </main>
       

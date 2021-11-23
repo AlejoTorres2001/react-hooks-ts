@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TaskCardProps from "../interfaces/TaskCardProps"
 
-const TaskCard = ({task}:TaskCardProps) => {
+const TaskCard = ({task,deleteTaskCallBack}:TaskCardProps) => {
   const [taskData, setTaskData] = useState(task);
     return (
       // make a card container with bootstrap
@@ -12,7 +12,9 @@ const TaskCard = ({task}:TaskCardProps) => {
           <button onClick={()=>{}} className="btn btn-primary m-3">
             Update
           </button>
-          <button onClick={()=>{}} className="btn btn-danger m-3">
+          <button onClick={()=>{
+            deleteTaskCallBack(taskData.id);
+          }} className="btn btn-danger m-3">
             Delete
           </button>
         </div>

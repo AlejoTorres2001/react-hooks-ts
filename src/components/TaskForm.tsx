@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Task } from "../interfaces/Task"
+import { TaskFormProps } from "../interfaces/TaskFormProps";
 import { getTasks } from "../utils/getTasks";
 import { setTask } from "../utils/setTasks";
 
-const TaskForm = () => {
+const TaskForm = ({addTaskCallback}:TaskFormProps) => {
     //state for form
     const [taskData, setTaskData] = useState({
         title: "",
@@ -14,6 +15,7 @@ const TaskForm = () => {
         task.id = tasks.length + 1;
         tasks.push(task);
         setTask(tasks);
+        addTaskCallback();
     }
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

@@ -1,6 +1,7 @@
 import { Task } from "./Task";
 
 export default interface TaskCardProps {
-    task: Task;
+    task: Task,
+    deleteTaskCallBack: Function;
 
 }
