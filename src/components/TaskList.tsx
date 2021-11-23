@@ -1,16 +1,24 @@
 import { Task } from "../interfaces/Task";
 import TaskCard from "./TaskCard";
-import  TaskListProps  from "../interfaces/TaskListProps";
-const TaskList = ({tasks,deleteTaskCallBack,updateTaskCallBack}:TaskListProps) => {
-    return (
-        <div>
-             {tasks.map((task:Task) => {
+import TaskListProps from "../interfaces/TaskListProps";
+const TaskList = ({
+  tasks,
+  deleteTaskCallBack,
+  updateTaskCallBack,
+}: TaskListProps) => {
+  return (
+    <div>
+      {tasks.map((task: Task) => {
         return (
-          <TaskCard task={task} deleteTaskCallBack={deleteTaskCallBack} updateTaskCallBack={updateTaskCallBack}></TaskCard>
+          <TaskCard
+            task={task}
+            deleteTaskCallBack={deleteTaskCallBack}
+            updateTaskCallBack={updateTaskCallBack}
+          ></TaskCard>
         );
       })}
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default TaskList
+export default TaskList;
